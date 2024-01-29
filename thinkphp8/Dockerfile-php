@@ -1,9 +1,0 @@
-FROM php:fpm-alpine3.19
-MAINTAINER wangshuzhan
-RUN curl -sS https://getcomposer.org/installer | php  && mv composer.phar /usr/local/bin/composer
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk update && apk add --no-cache git
-RUN composer create-project topthink/think /var/www/html
-WORKDIR /var/www/html
-RUN chown www-data:www-data -R .
-EXPOSE 9090
